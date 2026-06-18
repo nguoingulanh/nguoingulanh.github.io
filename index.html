@@ -1,334 +1,878 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>CV - Nguyen Van Lanh</title>
+    <title>Lanh Nguyen - Senior Backend Developer</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Font -->
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700%7CAllura" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap" rel="stylesheet">
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            background: #fff;
+            line-height: 1.6;
+        }
 
-    <!-- Stylesheets -->
+        a { text-decoration: none; color: inherit; }
 
-    <link href="common-css/bootstrap.css" rel="stylesheet">
+        /* ── Container ── */
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-    <link href="common-css/ionicons.css" rel="stylesheet">
+        /* ── Hero ── */
+        .hero {
+            background: #0B1526;
+            padding: 52px 0;
+            position: relative;
+            overflow: hidden;
+        }
 
-    <link href="common-css/fluidbox.min.css" rel="stylesheet">
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 220px;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1.5px);
+            background-size: 22px 22px;
+            pointer-events: none;
+        }
 
-    <link href="02-cv-boxed/css/styles.css" rel="stylesheet">
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
 
-    <link href="02-cv-boxed/css/responsive.css" rel="stylesheet">
+        .hero-avatar-wrap {
+            position: relative;
+            flex-shrink: 0;
+        }
 
+        .hero-avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 3px solid #2563EB;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-online {
+            position: absolute;
+            bottom: 7px;
+            right: 7px;
+            width: 17px;
+            height: 17px;
+            background: #22c55e;
+            border-radius: 50%;
+            border: 2.5px solid #0B1526;
+        }
+
+        .hero-info { flex: 1; min-width: 0; }
+
+        .hero-info h1 {
+            color: #fff;
+            font-size: 1.9rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 5px;
+        }
+
+        .hero-title {
+            color: #4A90E2;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .hero-desc {
+            color: #8fa3b8;
+            font-size: 0.83rem;
+            margin-bottom: 18px;
+            max-width: 380px;
+            line-height: 1.6;
+        }
+
+        .hero-contacts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 22px;
+            margin-bottom: 18px;
+        }
+
+        .hero-contacts span,
+        .hero-contacts a {
+            color: #8fa3b8;
+            font-size: 0.78rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-contacts i { color: #4A90E2; font-size: 0.8rem; }
+
+        .hero-socials { display: flex; gap: 10px; }
+
+        .hero-socials a {
+            color: #8fa3b8;
+            width: 34px;
+            height: 34px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.88rem;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .hero-socials a:hover { border-color: #4A90E2; color: #4A90E2; }
+
+
+        /* ── Section commons ── */
+        section { padding: 58px 0; }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 36px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: #EBF3FF;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2563EB;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #1a202c;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 3px solid #2563EB;
+            padding-bottom: 3px;
+        }
+
+        .tag {
+            background: #EBF3FF;
+            color: #2563EB;
+            font-size: 0.68rem;
+            font-weight: 500;
+            padding: 2px 10px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* ── About ── */
+        .about-section { background: #fff; }
+
+        .about-inner {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .about-text {
+            flex: 1;
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: flex;
+            gap: 22px;
+            flex-shrink: 0;
+        }
+
+        .feat-box { text-align: center; width: 88px; }
+
+        .feat-icon {
+            width: 52px;
+            height: 52px;
+            background: #EBF3FF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2563EB;
+            font-size: 1.2rem;
+            margin: 0 auto 9px;
+        }
+
+        .feat-box span {
+            font-size: 0.68rem;
+            color: #666;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* ── Experience ── */
+        .experience-section { background: #f8fafc; }
+
+        .timeline { position: relative; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e2e8f0;
+            transform: translateX(-50%);
+        }
+
+        .tl-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: calc(50% + 32px);
+            margin-bottom: 44px;
+            position: relative;
+        }
+
+        .tl-item.right {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: calc(50% + 32px);
+        }
+
+        .tl-dot {
+            position: absolute;
+            left: 50%;
+            top: 22px;
+            width: 14px;
+            height: 14px;
+            background: #2563EB;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            border: 3px solid #f8fafc;
+        }
+
+        .tl-date {
+            position: absolute;
+            top: 15px;
+            color: #2563EB;
+            font-size: 0.75rem;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .tl-item:not(.right) .tl-date {
+            left: calc(50% + 22px);
+            text-align: left;
+        }
+
+        .tl-item.right .tl-date {
+            right: calc(50% + 22px);
+            text-align: right;
+        }
+
+        .tl-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px 22px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            width: 100%;
+            max-width: 390px;
+            border: 1px solid #e8edf2;
+            position: relative;
+        }
+
+        .tl-bookmark {
+            position: absolute;
+            top: 0;
+            right: 18px;
+            width: 14px;
+            height: 22px;
+            clip-path: polygon(0 0, 100% 0, 100% 82%, 50% 100%, 0 82%);
+        }
+
+        .tl-item.right .tl-bookmark { background: #2563EB; }
+        .tl-item:not(.right) .tl-bookmark { background: #d1dce8; }
+
+        .tl-card h4 {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 3px;
+            padding-right: 20px;
+        }
+
+        .tl-company {
+            color: #2563EB;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .tl-location {
+            color: #999;
+            font-size: 0.73rem;
+            margin-bottom: 10px;
+        }
+
+        .tl-location i { margin-right: 3px; }
+
+        .tl-desc {
+            color: #555;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+        /* ── Education ── */
+        .education-section { background: #fff; }
+
+        .edu-timeline {
+            display: flex;
+            position: relative;
+            gap: 0;
+        }
+
+        .edu-timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 8%;
+            right: 8%;
+            height: 2px;
+            background: #e2e8f0;
+        }
+
+        .edu-item {
+            flex: 1;
+            position: relative;
+            padding-top: 50px;
+            text-align: center;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .edu-dot {
+            position: absolute;
+            top: 14px;
+            left: 50%;
+            width: 14px;
+            height: 14px;
+            background: #2563EB;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            border: 3px solid #fff;
+        }
+
+        .edu-icon {
+            width: 48px;
+            height: 48px;
+            background: #EBF3FF;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2563EB;
+            font-size: 1.1rem;
+            margin: 0 auto 10px;
+        }
+
+        .edu-year {
+            color: #2563EB;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .edu-item h5 {
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 4px;
+        }
+
+        .edu-school {
+            color: #2563EB;
+            font-size: 0.74rem;
+            margin-bottom: 3px;
+        }
+
+        .edu-gpa { color: #999; font-size: 0.72rem; }
+
+        /* ── Skills + Projects ── */
+        .bottom-section { background: #f8fafc; }
+
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .skills-table { width: 100%; border-collapse: collapse; }
+
+        .skills-table tr { border-bottom: 1px solid #edf0f5; }
+
+        .skills-table tr:last-child { border-bottom: none; }
+
+        .skills-table td {
+            padding: 10px 6px;
+            font-size: 0.82rem;
+            vertical-align: middle;
+        }
+
+        .skills-table td:first-child {
+            color: #666;
+            font-weight: 600;
+            width: 82px;
+            white-space: nowrap;
+        }
+
+        .skills-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+        .project-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin-bottom: 14px;
+            border: 1px solid #e8edf2;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .project-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.05rem;
+            flex-shrink: 0;
+        }
+
+        .project-icon.purple { background: #7C3AED; }
+        .project-icon.green  { background: #16A34A; }
+        .project-icon.blue   { background: #2563EB; }
+
+        .project-body { flex: 1; min-width: 0; }
+
+        .project-body h5 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 4px;
+        }
+
+        .project-body p {
+            font-size: 0.75rem;
+            color: #666;
+            line-height: 1.55;
+            margin-bottom: 10px;
+        }
+
+        .project-link {
+            color: #2563EB;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .project-link:hover { text-decoration: underline; }
+
+        /* ── Footer ── */
+        footer {
+            background: #0B1526;
+            color: #8fa3b8;
+            text-align: center;
+            padding: 22px 20px;
+            font-size: 0.8rem;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .hero-inner { flex-direction: column; text-align: center; }
+            .hero-contacts { justify-content: center; }
+            .hero-socials { justify-content: center; }
+            .hero-stats { width: 100%; }
+            .hero-desc { max-width: 100%; }
+
+            .about-inner { flex-direction: column; }
+            .about-features { justify-content: center; }
+
+            .timeline::before { left: 18px; transform: none; }
+            .tl-item,
+            .tl-item.right {
+                justify-content: flex-start;
+                padding-left: 48px;
+                padding-right: 0;
+            }
+            .tl-dot { left: 18px; transform: none; }
+            .tl-date { position: static; display: block; margin-bottom: 6px; }
+            .tl-item:not(.right) .tl-date,
+            .tl-item.right .tl-date { text-align: left; }
+
+            .edu-timeline { flex-direction: column; gap: 24px; }
+            .edu-timeline::before { display: none; }
+            .edu-dot { display: none; }
+            .edu-item { padding-top: 0; }
+
+            .bottom-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-<section class="intro-section">
+<!-- ── HERO ── -->
+<section class="hero">
     <div class="container">
-        <div class="intro">
-            <div class="row">
+        <div class="hero-inner">
 
-                <div class="col-sm-8 col-md-4 col-lg-3">
-                    <div class="profile-img margin-b-30"><img src="images/profile-1-250x250.jpg" alt=""></div>
-                </div>
-
-                <div class="col-sm-10 col-md-5 col-lg-6">
-                    <h2><b>NGUYEN VAN LANH</b></h2>
-                    <h4 class="font-yellow">Developer</h4>
-                    <ul class="information margin-tb-30">
-                        <li><b class="font-yellow">BORN</b> : February 22, 1997</li>
-                        <li><b class="font-yellow">EMAIL</b> : nguoingulanh@gmail.com</li>
-                        <li><b class="font-yellow">PHONE</b> : 038292****</li>
-                        <li><b class="font-yellow">MARITAL STATUS</b> : Single</li>
-                    </ul>
-                    <ul class="social-icons">
-                        <li><a href="https://www.pinterest.com/nguoingulanh1997/"><i
-                                class="ion-social-pinterest"></i></a></li>
-                        <li><a href="https://www.instagram.com/nguoingulanh/"><i class="ion-social-instagram"></i></a>
-                        </li>
-                        <li><a href="https://www.facebook.com/nguoingulanh1997"><i class="ion-social-facebook"></i></a>
-                        </li>
-                        <li><a href="https://github.com/nguoingulanh"><i class="ion-social-github"></i></a>
-                        </li>
-                        <li><a href="skype:live:nguoingulanh?chat"><i class="ion-social-skype"></i></a>
-                        </li>
-                        <li><a href="https://twitter.com/Lanh78247872"><i class="ion-social-twitter"></i></a></li>
-                    </ul>
-                </div>
-
-                <div class="col-sm-10 col-md-3 col-lg-3">
-                    <a class="downlad-btn" href="#">Download CV</a>
-                </div>
-
+            <div class="hero-avatar-wrap">
+                <img class="hero-avatar" src="images/profile-1-250x250.jpg" alt="Lanh Nguyen">
+                <div class="hero-online"></div>
             </div>
+
+            <div class="hero-info">
+                <h1>Lanh Nguyen</h1>
+                <div class="hero-title">Software Engineer</div>
+                <p class="hero-desc">Passionate about building scalable systems, clean code and empowering teams to deliver impactful products.</p>
+                <div class="hero-contacts">
+                    <a href="mailto:nguoingulanh@gmail.com"><i class="fa fa-envelope"></i> nguoingulanh@gmail.com</a>
+                    <span><i class="fa fa-phone"></i> (+84) 382 928 xxx</span>
+                    <span><i class="fa fa-location-dot"></i> Da Nang, Viet Nam</span>
+                </div>
+                <div class="hero-socials">
+                    <a href="https://github.com/nguoingulanh" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/nguoingulanh/" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="Website"><i class="fa fa-globe"></i></a>
+                </div>
+            </div>
+
 
         </div>
     </div>
 </section>
 
 
-<section class="about-section section">
+<!-- ── ABOUT ── -->
+<section class="about-section">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-3">
-                <div class="heading">
-                    <h3><b>About me</b></h3>
+        <div class="section-header">
+            <div class="section-icon"><i class="fa fa-user"></i></div>
+            <div class="section-title">About Me</div>
+        </div>
+        <div class="about-inner">
+            <p class="about-text">I am a Software Engineer with strong experience in Laravel, system architecture, microservices and cloud infrastructure. I love solving complex problems and building products that create real value for users.</p>
+            <div class="about-features">
+                <div class="feat-box">
+                    <div class="feat-icon"><i class="fa fa-code"></i></div>
+                    <span>Fullstack<br>Developer</span>
                 </div>
-            </div><!-- col-sm-3 -->
-            <div class="col-sm-12 col-md-9">
-                <p class="margin-b-50">Hello, my name is Lanh. I'm developer. I am a confident, explorative and friendly person. With my experience, I'm always ready to learn new things.</p>
-
-                <div class="row">
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <div class="radial-prog-area margin-b-30">
-                            <div class="radial-progress" data-prog-percent=".90">
-                                <div></div>
-                                <h6 class="progress-title">HTML5 & CSS3</h6>
-                            </div>
-                        </div><!-- radial-prog-area-->
-                    </div><!-- col-sm-6-->
-
-					<div class="col-sm-6 col-md-6 col-lg-3">
-						<div class="radial-prog-area margin-b-30">
-							<div class="radial-progress" data-prog-percent=".80">
-								<div></div>
-								<h6 class="progress-title">JAVASCRIPT</h6>
-							</div>
-						</div><!-- radial-prog-area-->
-					</div><!-- col-sm-6-->
-
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <div class="radial-prog-area margin-b-30">
-                            <div class="radial-progress" data-prog-percent=".80">
-                                <div></div>
-                                <h6 class="progress-title">WEB DESIGN</h6>
-                            </div>
-                        </div><!-- radial-prog-area-->
-                    </div><!-- col-sm-6-->
-
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <div class="radial-prog-area margin-b-50">
-                            <div class="radial-progress" data-prog-percent=".90">
-                                <div></div>
-                                <h6 class="progress-title">PHP</h6>
-                            </div>
-                        </div><!-- radial-prog-area-->
-                    </div><!-- col-sm-6-->
-
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <div class="radial-prog-area margin-b-50">
-                            <div class="radial-progress" data-prog-percent=".80">
-                                <div></div>
-                                <h6 class="progress-title">LARAVEL</h6>
-                            </div>
-                        </div><!-- radial-prog-area-->
-                    </div><!-- col-sm-6-->
-
-					<div class="col-sm-6 col-md-6 col-lg-3">
-						<div class="radial-prog-area margin-b-50">
-							<div class="radial-progress" data-prog-percent=".80">
-								<div></div>
-								<h6 class="progress-title">WORDPRESS</h6>
-							</div>
-						</div><!-- radial-prog-area-->
-                    </div><!-- col-sm-6-->
-                    
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <div class="radial-prog-area margin-b-50">
-                            <div class="radial-progress" data-prog-percent=".70">
-                                <div></div>
-                                <h6 class="progress-title">REACT NATIVE</h6>
-                            </div>
-                        </div><!-- radial-prog-area-->
-                    </div><!-- col-sm-6-->
-
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <div class="radial-prog-area margin-b-50">
-                            <div class="radial-progress" data-prog-percent=".70">
-                                <div></div>
-                                <h6 class="progress-title">GIT</h6>
-                            </div>
-                        </div><!-- radial-prog-area-->
-                    </div><!-- col-sm-6-->
-
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <div class="radial-prog-area margin-b-50">
-                            <div class="radial-progress" data-prog-percent=".70">
-                                <div></div>
-                                <h6 class="progress-title">VUE JS</h6>
-                            </div>
-                        </div><!-- radial-prog-area-->
-                    </div><!-- col-sm-6-->
-
-					<div class="col-sm-6 col-md-6 col-lg-3">
-						<div class="radial-prog-area margin-b-50">
-							<div class="radial-progress" data-prog-percent=".60">
-								<div></div>
-								<h6 class="progress-title">C#</h6>
-							</div>
-						</div><!-- radial-prog-area-->
-					</div><!-- col-sm-6-->
-
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <div class="radial-prog-area margin-b-30">
-                            <div class="radial-progress" data-prog-percent=".40">
-                                <div></div>
-                                <h6 class="progress-title">PHOTOSHOP</h6>
-                            </div>
-                        </div><!-- radial-prog-area-->
-                    </div><!-- col-sm-6-->
-
-                </div><!-- row -->
-            </div><!-- col-sm-9 -->
-        </div><!-- row -->
-    </div><!-- container -->
-</section><!-- about-section -->
-
-<section class="experience-section section">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-3">
-                <div class="heading">
-                    <h3><b>Work Experience</b></h3>
-                    <h6 class="font-lite-black"><b>PREVIOUS JOBS</b></h6>
+                <div class="feat-box">
+                    <div class="feat-icon"><i class="fa fa-cloud"></i></div>
+                    <span>System<br>Design</span>
                 </div>
-            </div><!-- col-sm-3 -->
-
-            <div class="col-sm-12 col-md-9">
-                <!-- start-->
-                <div class="experience margin-b-50">
-                    <h4><b>FULLSTACK DEVELOPER</b></h4>
-					<h5 class="font-yellow"><b><a href="https://jhotech.co" target="_blank">JHO TECH COMPANY LIMITED</a></b></h5>
-                    <h6 class="font-lite-black margin-t-10">JULY 2020 - PRESENT</h6>
-                    <p class="margin-tb-30">Join in, develop company's website application, mobile application.
-					</p>
-                    <ul class="list margin-b-30">
-						Use technology:
-						<li>PHP</li>
-                        <li>HTML5 & CSS3</li>
-						<li>Javascript</li>
-						<li>Laravel</li>
-                        <li>React Native</li>
-                        <li>ReactJS</li>
-						<li>VueJs</li>
-                    </ul>
+                <div class="feat-box">
+                    <div class="feat-icon"><i class="fa fa-database"></i></div>
+                    <span>Database<br>Optimization</span>
                 </div>
-
-                <div class="experience margin-b-50">
-                    <h4><b>WEB DEVELOPER</b></h4>
-					<h5 class="font-yellow"><b><a href="https://suga.vn" target="_blank">SUGA - GROUP</a></b></h5>
-                    <h6 class="font-lite-black margin-t-10">SEPTEMBER 2019 - JULY 2020</h6>
-                    <p class="margin-tb-30">Join in, develop company's website application.
-					</p>
-                    <ul class="list margin-b-30">
-						Use technology:
-						<li>PHP</li>
-                        <li>HTML5 & CSS3</li>
-						<li>Javascript</li>
-						<li>Laravel</li>
-                        <li>Wordpress</li>
-						<li>VueJs</li>
-                    </ul>
+                <div class="feat-box">
+                    <div class="feat-icon"><i class="fa fa-people-group"></i></div>
+                    <span>Team<br>Leadership</span>
                 </div>
-
-                <div class="experience margin-b-50">
-                    <h4><b>WEB DEVELOPER</b></h4>
-                    <h5 class="font-yellow"><b><a href="https://zenktechz.com/">ZENKTECHZ FREELANCE</a></b></h5>
-                    <h6 class="font-lite-black margin-t-10">FEBRUARY 2017 - PRESENT</h6>
-                    <p class="margin-tb-30">
-                        Freelance working, share and exchange programming knowledge.
-                    </p>
-                    <ul class="list margin-b-30">
-                        Use technology:
-                        <li>PHP</li>
-                        <li>HTML5 & CSS3</li>
-                        <li>Javascript</li>
-                        <li>Laravel</li>
-                        <li>Wordpress</li>
-                    </ul>
-                </div>
-
             </div>
         </div>
     </div>
 </section>
 
-<section class="education-section section">
+
+<!-- ── EXPERIENCE ── -->
+<section class="experience-section">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-3">
-                <div class="heading">
-                    <h3><b>Education</b></h3>
-                    <h6 class="font-lite-black"><b>ACADEMIC CAREER</b></h6>
-                </div>
-            </div><!-- col-sm-3 -->
+        <div class="section-header">
+            <div class="section-icon"><i class="fa fa-briefcase"></i></div>
+            <div class="section-title">Experience</div>
+        </div>
+        <div class="timeline">
 
-            <div class="col-sm-12 col-md-9">
-
-                <div class="education-wrapper">
-                    <div class="education margin-b-50">
-                        <h4><b>GRADUATED</b></h4>
-                        <h5 class="font-yellow"><b>QUY NHON UNIVERSITY</b></h5>
-                        <h6 class="font-lite-black margin-t-10">GRADUATED IN JULY 2009 (2015 - 2019)</h6>
-                        <p class="margin-tb-30">This is the university where I learned a lot of information technology.
-                            I have learned how to install windows, network configuration, c#, c, php, teamwork and
-                            presentation skills. </p>
-                    </div><!-- education -->
-
-                    <div class="education margin-b-50">
-                        <h4><b>GRADUATED</b></h4>
-                        <h5 class="font-yellow"><b>XUAN DIEU HIGH SCHOOL</b></h5>
-                        <h6 class="font-lite-black margin-t-10">2012-2015</h6>
-                        <p class="margin-tb-30">End of the student time, leaving a lot of memories. </p>
-                    </div><!-- education -->
-
-                    <div class="education margin-b-50">
-                        <h4><b>GRADUATED</b></h4>
-                        <h5 class="font-yellow"><b>TUY PHUOC SECONDARY SCHOOL</b></h5>
-                        <h6 class="font-lite-black margin-t-10">2008 - 2012</h6>
-                        <p class="margin-tb-30">End of the student time, leaving a lot of memories. </p>
-                    </div><!-- education -->
-
-                    <div class="education margin-b-50">
-                        <h4><b>GRADUATED</b></h4>
-                        <h5 class="font-yellow"><b>PHUOC NGHIA PRIMARY SCHOOL</b></h5>
-                        <h6 class="font-lite-black margin-t-10">2003 - 2008</h6>
-                        <p class="margin-tb-30">End of the student time, leaving a lot of memories. </p>
+            <div class="tl-item right">
+                <div class="tl-dot"></div>
+                <div class="tl-date">2023<br>– Present</div>
+                <div class="tl-card">
+                    <div class="tl-bookmark"></div>
+                    <h4>Team Leader</h4>
+                    <div class="tl-company">JHO Tech</div>
+                    <div class="tl-location"><i class="fa fa-location-dot"></i> Viet Nam</div>
+                    <p class="tl-desc">Led development of multiple software projects across social networking, e-commerce, gaming, healthcare and SaaS platforms, primarily targeting European markets (France, Switzerland). Managed cross-functional teams through the full product lifecycle — architecture design, sprint planning, code reviews and technical mentoring.</p>
+                    <div class="tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">React.js</span>
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">React Native</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Stripe</span>
+                        <span class="tag">PayPal</span>
+                        <span class="tag">Monetico</span>
                     </div>
                 </div>
             </div>
-    </div>
 
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-date">2020<br>– 2023</div>
+                <div class="tl-card">
+                    <div class="tl-bookmark"></div>
+                    <h4>Fullstack Developer</h4>
+                    <div class="tl-company">JHO Tech</div>
+                    <div class="tl-location"><i class="fa fa-location-dot"></i> Viet Nam</div>
+                    <p class="tl-desc">Developed and maintained scalable web and mobile applications across e-commerce, social networking, healthcare and recruitment industries. Designed RESTful APIs, database architectures and Docker-based deployments while integrating third-party payment gateways and external services.</p>
+                    <div class="tags">
+                        <span class="tag">Laravel</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">React.js</span>
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">React Native</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Elasticsearch</span>
+                        <span class="tag">Stripe</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tl-item right">
+                <div class="tl-dot"></div>
+                <div class="tl-date">2018<br>– 2020</div>
+                <div class="tl-card">
+                    <div class="tl-bookmark"></div>
+                    <h4>Web Developer</h4>
+                    <div class="tl-company">Interchip / Suga Group</div>
+                    <div class="tl-location"><i class="fa fa-location-dot"></i> Viet Nam</div>
+                    <p class="tl-desc">Delivered custom websites and web applications for small and medium-sized businesses using WordPress and Laravel. Built e-commerce platforms, management systems and RESTful APIs; optimized performance, database queries and SEO for improved user experience.</p>
+                    <div class="tags">
+                        <span class="tag">WordPress</span>
+                        <span class="tag">WooCommerce</span>
+                        <span class="tag">Laravel</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">HTML/CSS</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </section>
 
+
+<!-- ── EDUCATION ── -->
+<section class="education-section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-icon"><i class="fa fa-graduation-cap"></i></div>
+            <div class="section-title">Education</div>
+        </div>
+        <div class="edu-timeline">
+
+            <div class="edu-item">
+                <div class="edu-dot"></div>
+                <div class="edu-icon"><i class="fa fa-graduation-cap"></i></div>
+                <div class="edu-year">2015 – 2019</div>
+                <h5>Information Technology</h5>
+                <div class="edu-school">Quy Nhon University</div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-dot"></div>
+                <div class="edu-icon"><i class="fa fa-school"></i></div>
+                <div class="edu-year">2012 – 2015</div>
+                <h5>High School</h5>
+                <div class="edu-school">Xuan Dieu High School</div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-dot"></div>
+                <div class="edu-icon"><i class="fa fa-school"></i></div>
+                <div class="edu-year">2008 – 2012</div>
+                <h5>Secondary School</h5>
+                <div class="edu-school">Tuy Phuoc Secondary School</div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-dot"></div>
+                <div class="edu-icon"><i class="fa fa-school"></i></div>
+                <div class="edu-year">2003 – 2008</div>
+                <h5>Primary School</h5>
+                <div class="edu-school">Phuoc Nghia Primary School</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ── SKILLS + PROJECTS ── -->
+<section class="bottom-section">
+    <div class="container">
+        <div class="bottom-grid">
+
+            <div>
+                <div class="section-header">
+                    <div class="section-icon"><i class="fa fa-code"></i></div>
+                    <div class="section-title">Skills</div>
+                </div>
+                <table class="skills-table">
+                    <tr>
+                        <td>Backend</td>
+                        <td>
+                            <div class="skills-tags">
+                                <span class="tag">Laravel</span>
+                                <span class="tag">PHP</span>
+                                <span class="tag">Node.js</span>
+                                <span class="tag">RESTful API</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Frontend</td>
+                        <td>
+                            <div class="skills-tags">
+                                <span class="tag">React.js</span>
+                                <span class="tag">Vue.js</span>
+                                <span class="tag">React Native</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">HTML/CSS</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Database</td>
+                        <td>
+                            <div class="skills-tags">
+                                <span class="tag">MySQL</span>
+                                <span class="tag">Elasticsearch</span>
+                                <span class="tag">Meilisearch</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>DevOps</td>
+                        <td>
+                            <div class="skills-tags">
+                                <span class="tag">Docker</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Payment</td>
+                        <td>
+                            <div class="skills-tags">
+                                <span class="tag">Stripe</span>
+                                <span class="tag">PayPal</span>
+                                <span class="tag">Monetico</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>CMS</td>
+                        <td>
+                            <div class="skills-tags">
+                                <span class="tag">WordPress</span>
+                                <span class="tag">WooCommerce</span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                <div class="section-header">
+                    <div class="section-icon"><i class="fa fa-star"></i></div>
+                    <div class="section-title">Featured Projects</div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon purple"><i class="fa fa-users"></i></div>
+                    <div class="project-body">
+                        <h5>Social Networking Platform</h5>
+                        <p>Real-time social app with chat, video call and subscription features, targeting European markets.</p>
+                        <div class="tags" style="margin-bottom:9px">
+                            <span class="tag">Laravel</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">WebSocket</span>
+                            <span class="tag">Redis</span>
+                            <span class="tag">React.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon green"><i class="fa fa-cart-shopping"></i></div>
+                    <div class="project-body">
+                        <h5>E-Commerce Marketplace</h5>
+                        <p>Multi-vendor marketplace platform with full order management and international payment integration for French & Swiss markets.</p>
+                        <div class="tags" style="margin-bottom:9px">
+                            <span class="tag">Laravel</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">Stripe</span>
+                            <span class="tag">PayPal</span>
+                            <span class="tag">Monetico</span>
+                            <span class="tag">Docker</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon blue"><i class="fa fa-briefcase"></i></div>
+                    <div class="project-body">
+                        <h5>SaaS / Recruitment Platform</h5>
+                        <p>Cloud-ready SaaS platform covering healthcare and recruitment workflows with advanced search and scalable infrastructure.</p>
+                        <div class="tags" style="margin-bottom:9px">
+                            <span class="tag">Laravel</span>
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">Elasticsearch</span>
+                            <span class="tag">Meilisearch</span>
+                            <span class="tag">Docker</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ── FOOTER ── -->
 <footer>
-    <p class="copyright">
-        Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-        All rights reserved
-    </p>
+    <p>&copy; <script>document.write(new Date().getFullYear())</script> Lanh Nguyen. All rights reserved.</p>
 </footer>
-
-
-<script src="common-js/jquery-3.2.1.min.js"></script>
-
-<script src="common-js/tether.min.js"></script>
-
-<script src="common-js/bootstrap.js"></script>
-
-<script src="common-js/isotope.pkgd.min.js"></script>
-
-<script src="common-js/jquery.waypoints.min.js"></script>
-
-<script src="common-js/progressbar.min.js"></script>
-
-<script src="common-js/jquery.fluidbox.min.js"></script>
-
-<script src="common-js/scripts.js"></script>
 
 </body>
 </html>
